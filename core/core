@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# ingress::os get the system os
+ingress::os() {
+  local os="linux"
+
+  uname -a | grep "Darwin" >>/dev/null 2>&1
+  if [ $? == 0 ]; then
+    os=darwin
+  fi
+
+  echo $os
+}
+
+
+export -f ingress::os

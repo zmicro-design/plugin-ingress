@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ingress::service_restart() {
+  zmicro service restart $PLUGIN_INGRESS_SERVICE_NAME
+}
+
+export -f ingress::service_restart

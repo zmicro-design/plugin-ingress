@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ingress::config_inspect() {
+  zmicro service config $PLUGIN_INGRESS_SERVICE_NAME
+}
+
+export -f ingress::config_inspect

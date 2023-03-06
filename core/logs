@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ingress::logs() {
+  zmicro service logs $PLUGIN_INGRESS_SERVICE_NAME -f --tail 200
+}
+
+export -f ingress::logs

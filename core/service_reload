@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ingress::service_reload() {
+  zmicro service exec $PLUGIN_INGRESS_SERVICE_NAME nginx -s reload
+}
+
+export -f ingress::service_reload

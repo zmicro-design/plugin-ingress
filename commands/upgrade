@@ -1,0 +1,28 @@
+#!/bin/bash
+
+help() {
+  echo "Usage:"
+  echo "  zmicro ingress upgrade"
+}
+
+core() {
+  if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    help
+    exit 0
+  fi
+
+  log::info "[$(timestamp)] start to update service ..."
+  ingress::upgrade
+  if [ "$?" != "0" ]; then
+    log::error "[$(timestamp)] failed to update service."
+    return 1
+  fi
+
+  log::success "[$(timestamp)] succeed to update service."
+}
+
+run() {
+  core "$@"
+}
+
+run "$@"

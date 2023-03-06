@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ingress::service_stop() {
+  zmicro service stop $PLUGIN_INGRESS_SERVICE_NAME
+}
+
+export -f ingress::service_stop

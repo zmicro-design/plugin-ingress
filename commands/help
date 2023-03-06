@@ -1,0 +1,41 @@
+#!/bin/bash
+
+name() {
+  local version=$(plugin::get_version $PLUGIN_INGRESS_NAME)
+  echo "ingress ($(color::success $version))"
+}
+
+description() {
+  echo "ingress service manager plugin"
+}
+
+usage() {
+  echo "Usage:"
+  echo "  zmicro ingress start        - Start ingress"
+  echo "  zmicro ingress stop         - Stop ingress"
+  echo "  zmicro ingress restart      - Restart ingress"
+  echo "  zmicro ingress inspect      - Inspect ingress"
+  echo "  zmicro ingress upgrade      - Upgrade ingress"
+  echo "  zmicro ingress help         - Show help"
+}
+
+example() {
+  echo "Example:"
+  echo "  zmicro ingress start"
+}
+
+core() {
+  name
+  echo ""
+  description
+  echo ""
+  usage
+  echo ""
+  example
+}
+
+run() {
+  core $@
+}
+
+run $@

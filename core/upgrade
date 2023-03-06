@@ -1,0 +1,25 @@
+#!/bin/bash
+
+ingress::upgrade() {
+  log::info "[$(timestamp)] checking service config ..."
+  if [ ! -d "$PLUGIN_INGRESS_SERVICE_CONFIG_DIR" ] || [ ! -d "$PLUGIN_INGRESS_SERVICE_CONFIG_DIR/.git" ]; then
+    log::error "[$(timestamp)] please download config git repo at ${PLUGIN_INGRESS_SERVICE_CONFIG_DIR}."
+    return 1
+  fi
+
+  log::info "[$(timestamp)] updating service config ..."
+  git::update $PLUGIN_INGRESS_SERVICE_CONFIG_DIR
+  if [ "$?" != "0" ]; then
+    log::error "[$(timestamp)] failed to update service config."
+    return 1
+  fi
+
+  log::info "[$(timestamp)] reload service config ..."
+  ingress::reload
+  if [ "$?" != "0" ]; then
+    log::error "[$(timestamp)] failed to reload service config."
+    return 1
+  fi
+}
+
+export -f ingress::upgrade
