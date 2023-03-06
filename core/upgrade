@@ -15,7 +15,7 @@ ingress::upgrade() {
   fi
 
   log::info "[$(timestamp)] reload service config ..."
-  ingress::reload
+  ingress::service_reload
   if [ "$?" != "0" ]; then
     log::error "[$(timestamp)] failed to reload service config."
     return 1
